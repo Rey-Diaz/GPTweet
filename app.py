@@ -2,10 +2,13 @@ import openai
 import requests
 
 # OpenAI API configuration
-openai.api_key = 'YOUR_OPENAI_API_KEY'
+openai.api_key = 'API KEY'
 
 def generate_tweet():
-    prompt = "Compose a tweet about the benefits of AI in modern society."
+    prompt = (""" """)
+
+
+
     response = openai.Completion.create(
         engine="text-davinci-002",
         prompt=prompt,
@@ -15,7 +18,9 @@ def generate_tweet():
     return tweet_content
 
 tweet = generate_tweet()
-
+print(" ")
+print(tweet)
+print(" ")
 # Send tweet content to Zapier webhook for SMS notification
-webhook_url = 'YOUR_ZAPIER_WEBHOOK_URL'
-requests.post(webhook_url, data = {'tweet_content': tweet})
+#webhook_url = 'YOUR_ZAPIER_WEBHOOK_URL'
+#requests.post(webhook_url, data = {'tweet_content': tweet})
