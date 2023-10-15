@@ -1,6 +1,10 @@
 # config.py
 
-openai_api_key = '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'
+# Dictionary containing all API keys and connection strings
+api_keys = {
+    "openai_api_key": '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',
+    # Add other keys or connection strings here
+}
 
 # Persona information with a dark comedic theme
 persona = {

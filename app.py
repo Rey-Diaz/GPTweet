@@ -11,14 +11,16 @@ class TweetGenerator:
     """
 
     def __init__(self):
-        self.api_key = getattr(config, 'openai_api_key', None)
-        self.context_data = {key: value for key, value in config.__dict__.items() if not key.startswith("__") and key != "openai_api_key"}
+        self.api_key = config.api_keys['openai_api_key']
+        # Exclude the api_keys dictionary and get the rest of the data from config
+        self.context_data = {key: value for key, value in config.__dict__.items() if not key.startswith("__") and key != "api_keys"}
         openai.api_key = self.api_key
 
     def _craft_creative_prompt(self):
-        persona_description = ". ".join([f"{key.capitalize()}: {value}" for key, value in config.persona.items()])
-        chatgpt_prompt = f"Inspired by the persona: '{persona_description}', craft a tweet and take creative freedom."
-        return chatgpt_prompt, persona_description
+        # Use all the context data to craft the prompt
+        all_data = ". ".join([f"{key.capitalize()}: {value}" for inner_dict in self.context_data.values() for key, value in inner_dict.items()])
+        chatgpt_prompt = f"Inspired by: '{all_data}', craft a tweet and take creative freedom."
+        return chatgpt_prompt
 
     def generate_tweets(self, num=1):
         tweet_prompt, persona_description = self._craft_creative_prompt()
