@@ -1,26 +1,42 @@
 import openai
-import requests
+from rich import print
+from rich.table import Table
+import config
 
-# OpenAI API configuration
-openai.api_key = 'API KEY'
+class TweetGenerator:
+    """
+    A class to generate tweets using the OpenAI API based on data provided in the config file.
+    """
 
-def generate_tweet():
-    prompt = (""" """)
+    def __init__(self):
+        self.api_key = getattr(config, 'openai_api_key', None)
+        self.context_data = {key: value for key, value in config.__dict__.items() if not key.startswith("__") and key != "openai_api_key"}
+        openai.api_key = self.api_key
 
+    def _craft_creative_prompt(self):
+        persona_description = ". ".join([f"{key.capitalize()}: {value}" for key, value in config.persona.items()])
+        context_hint = "Work from home dark comedic theme with events like virtual meetings and team-building exercises. Think of someone who's mildly annoyed with modern remote work culture but finds humor in the little things."
+        chatgpt_prompt = f"Inspired by the persona: '{persona_description}', and embracing the context: '{context_hint}', craft a tweet."
+        return chatgpt_prompt
 
+    def generate_tweets(self, num=1):
+        tweet_prompt = self._craft_creative_prompt()
+        
+        # Fetch num tweets in a single API call
+        response = openai.Completion.create(engine="text-davinci-003", prompt=tweet_prompt, max_tokens=150 * num, n=num)
+        
+        return [choice.text.strip() for choice in response.choices]
 
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=prompt,
-        max_tokens=280  # 280 is the character limit for a tweet
-    )
-    tweet_content = response.choices[0].text.strip()
-    return tweet_content
+def display_tweets(tweets):
+    """Displays tweets in a formatted table using the rich library."""
+    table = Table(title="Generated Tweets")
+    table.add_column("No.", justify="right", style="cyan")
+    table.add_column("Tweet", style="magenta")
+    for index, tweet in enumerate(tweets, 1):
+        table.add_row(str(index), tweet)
+    print(table)
 
-tweet = generate_tweet()
-print(" ")
-print(tweet)
-print(" ")
-# Send tweet content to Zapier webhook for SMS notification
-#webhook_url = 'YOUR_ZAPIER_WEBHOOK_URL'
-#requests.post(webhook_url, data = {'tweet_content': tweet})
+# Using the TweetGenerator class
+tweet_gen = TweetGenerator()
+tweets = tweet_gen.generate_tweets(5)
+display_tweets(tweets)
