@@ -15,8 +15,7 @@ class TweetGenerator:
 
     def _craft_creative_prompt(self):
         persona_description = ". ".join([f"{key.capitalize()}: {value}" for key, value in config.persona.items()])
-        context_hint = "Work from home dark comedic theme with events like virtual meetings and team-building exercises. Think of someone who's mildly annoyed with modern remote work culture but finds humor in the little things."
-        chatgpt_prompt = f"Inspired by the persona: '{persona_description}', and embracing the context: '{context_hint}', craft a tweet."
+        chatgpt_prompt = f"Inspired by the persona: '{persona_description}', craft a tweet and take creative freedom."
         return chatgpt_prompt
 
     def generate_tweets(self, num=1):
