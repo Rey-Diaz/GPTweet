@@ -1,14 +1,12 @@
 import openai
 import requests
+from pymongo import MongoClient
+# import insert_document from mongo_test.py
+from mongo_test import insert_document
 
 # OpenAI API configuration
-openai.api_key = 'API KEY'
 
-def generate_tweet():
-    prompt = (""" """)
-
-
-
+def generate_tweet(prompt):
     response = openai.Completion.create(
         engine="text-davinci-002",
         prompt=prompt,
@@ -17,10 +15,10 @@ def generate_tweet():
     tweet_content = response.choices[0].text.strip()
     return tweet_content
 
-tweet = generate_tweet()
-print(" ")
+prompt = "How would Mario solve inflation in the Mushroom Kingdom?"
+tweet = generate_tweet(prompt)
 print(tweet)
-print(" ")
-# Send tweet content to Zapier webhook for SMS notification
-#webhook_url = 'YOUR_ZAPIER_WEBHOOK_URL'
-#requests.post(webhook_url, data = {'tweet_content': tweet})
+
+# Insert tweet into MongoDB Atlas
+# insert_document(collection, prompt, tweet)
+insert_document(prompt, tweet)
