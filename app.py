@@ -2,33 +2,34 @@ import openai
 from rich import print
 from rich.table import Table
 import config
+from mongo_setup import insert_document
 
 class TweetGenerator:
-    """
-    A class to generate tweets using the OpenAI API based on data provided in the config file.
-    """
-
-    def __init__(self):
-        self.api_key = getattr(config, 'openai_api_key', None)
-        self.context_data = {key: value for key, value in config.__dict__.items() if not key.startswith("__") and key != "openai_api_key"}
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.context_data = self._extract_data_from_config()
         openai.api_key = self.api_key
 
+    def _extract_data_from_config(self):
+        return {key: value for key, value in config.__dict__.items() if not key.startswith("__") and key != "api_keys" and isinstance(value, dict)}
+
     def _craft_creative_prompt(self):
-        persona_description = ". ".join([f"{key.capitalize()}: {value}" for key, value in config.persona.items()])
-        context_hint = "Work from home dark comedic theme with events like virtual meetings and team-building exercises. Think of someone who's mildly annoyed with modern remote work culture but finds humor in the little things."
-        chatgpt_prompt = f"Inspired by the persona: '{persona_description}', and embracing the context: '{context_hint}', craft a tweet."
+        all_data = ". ".join([f"{key.capitalize()}: {value}" for inner_dict in self.context_data.values() for key, value in inner_dict.items()])
+        chatgpt_prompt = f"Inspired by: '{all_data}', craft a tweet and take creative freedom."
         return chatgpt_prompt
 
     def generate_tweets(self, num=1):
         tweet_prompt = self._craft_creative_prompt()
-        
-        # Fetch num tweets in a single API call
         response = openai.Completion.create(engine="text-davinci-003", prompt=tweet_prompt, max_tokens=150 * num, n=num)
-        
-        return [choice.text.strip() for choice in response.choices]
+        return [choice.text.strip() for choice in response.choices], tweet_prompt
 
-def display_tweets(tweets):
-    """Displays tweets in a formatted table using the rich library."""
+    def post_tweet_data(self, tweets, tweet_prompt):
+        for tweet in tweets:
+            insert_document(collection_name='persona_collection', item_input=self.context_data['persona'], tweet=tweet)
+            insert_document(collection_name='prompt_collection', item_input=tweet_prompt, tweet=tweet)
+            insert_document(collection_name='context_collection', item_input=self.context_data['context'], tweet=tweet)
+
+def display_tweets(tweets, tweet_prompt):
     table = Table(title="Generated Tweets")
     table.add_column("No.", justify="right", style="cyan")
     table.add_column("Tweet", style="magenta")
@@ -37,6 +38,7 @@ def display_tweets(tweets):
     print(table)
 
 # Using the TweetGenerator class
-tweet_gen = TweetGenerator()
-tweets = tweet_gen.generate_tweets(5)
-display_tweets(tweets)
+tweet_gen = TweetGenerator(api_key=config.api_keys['openai_api_key'])
+tweets, tweet_prompt = tweet_gen.generate_tweets(1)
+tweet_gen.post_tweet_data(tweets, tweet_prompt)  # Posting tweets to the database
+display_tweets(tweets, tweet_prompt)

@@ -1,6 +1,9 @@
-# config.py
+import os
 
-openai_api_key = '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'
+# Fetching the API key from environment variables
+api_keys = {
+    "openai_api_key": os.environ.get('OPENAI_API_KEY')
+}
 
 # Persona information with a dark comedic theme
 persona = {
