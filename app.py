@@ -41,12 +41,6 @@ class TweetGenerator:
     
         return [choice.text.strip() for choice in response.choices], tweet_prompt, persona_description, context_description
 
-def insert_persona(collection_name,item_input,tweet):
-    insert_document(collection_name, item_input, tweet)
-
-def insert_prompt(collection_name,item_input,tweet):
-    insert_document(collection_name, item_input, tweet)
-
 def display_tweets(tweets, tweet_prompt, persona_description, context_description):
     """Displays tweets in a formatted table using the rich library."""
     table = Table(title="Generated Tweets")

@@ -4,7 +4,7 @@ from pymongo import MongoClient
 CONNECTION_STRING = "mongodb+srv://gptweet:Ramroad7924!@cluster0.ucmu4hc.mongodb.net/"
 
 # create function to insert document into the collection
-def insert_document(collection_name, input, tweet):
+def insert_document(collection_name, item_input, tweet):
     
     # Initialize the client and connect to the database
     client = MongoClient(CONNECTION_STRING)
@@ -21,7 +21,7 @@ def insert_document(collection_name, input, tweet):
     header = text_before_underscore
 
     doc = {
-        header: input,
+        header: item_input,
         "tweet": tweet
     }
     collection.insert_one(doc)
