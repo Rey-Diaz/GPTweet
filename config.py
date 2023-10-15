@@ -1,6 +1,6 @@
 # config.py
 
-openai_api_key = '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'
+openai_api_key = ''
 
 # Persona information with a dark comedic theme
 persona = {
