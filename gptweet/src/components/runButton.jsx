@@ -12,7 +12,7 @@ function RunButton() {
 
     const handleButtonClickMain = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/run-main');
+            const response = await axios.post('http://localhost:5959/run-main');
             console.log(response.data.result);
         } catch (error) {
             console.error("Error running main.py code:", error);
