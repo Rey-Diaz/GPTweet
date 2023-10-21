@@ -13,8 +13,11 @@ def run_util():
 
 @app.route('/run-main', methods=['POST'])
 def run_main():
-    import utilities.main  # This will execute all the top-level code in main.py
+    # Since you've already imported main at the top, you can directly call its functions or use its variables here.
+    # For now, we'll just reference it to ensure it's executed.
+    _ = main
     return jsonify({"result": "main.py executed successfully"})
+
 
 
 if __name__ == '__main__':

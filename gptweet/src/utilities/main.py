@@ -1,9 +1,10 @@
 import openai
 from rich import print
 from rich.table import Table
-import config
+from utilities import config
+from utilities import mongo_setup
 # import insert_document from mongo_setup.py
-from mongo_setup import insert_document
+from utilities.mongo_setup import insert_document
 
 class TweetGenerator:
     """
