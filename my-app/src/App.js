@@ -1,61 +1,61 @@
-// src/App.js
 import React, { useState } from 'react';
-import './App.css';
+import { TextArea, Input, Button, Grid, Container, Segment } from 'semantic-ui-react';
 
 function App() {
-    const [persona, setPersona] = useState('Default Persona');
-    const [context, setContext] = useState('Default Context');
-    const [prompt, setPrompt] = useState('');
-    const [output, setOutput] = useState('');
+  const [personaInput, setPersonaInput] = useState('Default text for persona...');
+  const [contextInput, setContextInput] = useState('Default text for context...');
+  const [promptInput, setPromptInput] = useState('Default text for prompt...');
+  const [output, setOutput] = useState('');
 
-    const handleGenerateOutput = () => {
-        // You can process and generate the output here using the inputs.
-        const generatedOutput = `Persona: ${persona}\nContext: ${context}\nPrompt: ${prompt}`;
-        setOutput(generatedOutput);
-    };
+  const handleSubmit = () => {
+    // Combine texts for demonstration. Modify as needed.
+    setOutput(`${personaInput} ${contextInput} ${promptInput}`);
+  };
 
-    return (
-        <div className="App">
-            <h1>Chat App</h1>
-            <div className="input-container">
-                <div className="side-by-side">
-                    <div className="input-box">
-                        <label htmlFor="persona">Persona:</label>
-                        <textarea
-                            id="persona"
-                            value={persona}
-                            onChange={(e) => setPersona(e.target.value)}
-                            rows={4} // Adjust the number of rows as needed
-                        />
-                    </div>
-                    <div className="input-box">
-                        <label htmlFor="context">Context:</label>
-                        <textarea
-                            id="context"
-                            value={context}
-                            onChange={(e) => setContext(e.target.value)}
-                            rows={4} // Adjust the number of rows as needed
-                        />
-                    </div>
-                </div>
-                <div className="input-box centered">
-                    <label htmlFor="prompt">Prompt:</label>
-                    <textarea
-                        id="prompt"
-                        value={prompt}
-                        onChange={(e) => setPrompt(e.target.value)}
-                        rows={2} // Adjust the number of rows as needed
-                    />
-                </div>
-                <button onClick={handleGenerateOutput}>Generate Output</button>
-            </div>
-            {output && (
-                <div className="output-container">
-                    <p>{output}</p>
-                </div>
-            )}
-        </div>
-    );
+  return (
+    <Container>
+      <Grid stackable columns={2} divided>
+        <Grid.Row>
+          <Grid.Column>
+            <TextArea
+              placeholder='Default text for persona...'
+              value={personaInput}
+              onChange={(e, { value }) => setPersonaInput(value)}
+              style={{ width: '100%', minHeight: '150px' }}
+            />
+          </Grid.Column>
+          <Grid.Column>
+            <TextArea
+              placeholder='Default text for context...'
+              value={contextInput}
+              onChange={(e, { value }) => setContextInput(value)}
+              style={{ width: '100%', minHeight: '150px' }}
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row centered>
+          <Grid.Column width={10}>
+            <Input
+              fluid
+              placeholder='Default text for prompt...'
+              value={promptInput}
+              onChange={(e, { value }) => setPromptInput(value)}
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row centered>
+          <Grid.Column width={4} textAlign="center">
+            <Button primary onClick={handleSubmit}>
+              Submit
+            </Button>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+      <Segment textAlign="center" padded>
+        {output}
+      </Segment>
+    </Container>
+  );
 }
 
 export default App;
