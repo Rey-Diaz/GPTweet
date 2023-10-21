@@ -1,19 +1,20 @@
-import os
+# config.py
 
-# Fetching the API key from environment variables
+# Dictionary containing all API keys and connection strings
 api_keys = {
-    "openai_api_key": os.environ.get('OPENAI_API_KEY')
+    "openai_api_key": 'openai_api_key',
+    # Add other keys or connection strings here
 }
 
 # Persona information with a dark comedic theme
 persona = {
-    "name": "Alex",  # Giving our persona a name might help in generating more personalized tweets
+    "name": "Jorge",  # Giving our persona a name might help in generating more personalized tweets
     "profession": "work-from-home employee",
-    "location": "a dimly lit basement",  # Emphasizing the 'dark' theme
+    "location": "your mom's house",  # Emphasizing the 'dark' theme
     "age": 26,
-    "hobbies": "binge-watching crime documentaries and knitting",  # A contrast of a dark theme with a mundane activity
+    "hobbies": "reading plato and working out",  # A contrast of a dark theme with a mundane activity
     "quirk": "laughs at inappropriate times",  # Adds a comedic touch
-    "favourite_drink": "cold brew coffee with a hint of existential dread"  # A dark comedic spin on a common favorite
+    "favourite_drink": "a guiness"  # A dark comedic spin on a common favorite
 }
 
 # Context data for generating tweets

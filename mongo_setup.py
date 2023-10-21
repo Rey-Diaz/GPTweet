@@ -1,24 +1,33 @@
 from pymongo import MongoClient
-import os
 
-# Fetching the connection string from environment variables
-CONNECTION_STRING = os.environ.get("MONGO_CONNECTION_STRING")
+# Replace with your MongoDB Atlas connection string
+CONNECTION_STRING = "mongodb+srv://gptweet:Ramroad7924!@cluster0.ucmu4hc.mongodb.net/"
 
-client = MongoClient(CONNECTION_STRING)
-db = client['Cluster0']  # Replace 'your-database-name' with your database name
-
+# create function to insert document into the collection
 def insert_document(collection_name, item_input, tweet):
-    # Check if collection exists, if not, create it
+    
+    # Initialize the client and connect to the database
+    client = MongoClient(CONNECTION_STRING)
+    db = client['Cluster0']  # Replace 'your-database-name' with your database name
+
+    # Create a new collection (if it doesn't exist)
     if collection_name not in db.list_collection_names():
         db.create_collection(collection_name)
 
     # Use the collection
     collection = db[collection_name]
+    parts = collection_name.split("_")
+    text_before_underscore = parts[0]
+    header = text_before_underscore
 
-    # Instead of splitting the collection name, we'll use a more structured approach
     doc = {
-        "header": item_input,
+        header: item_input,
         "tweet": tweet
     }
     collection.insert_one(doc)
-    print(f"Document inserted in the collection: {collection_name}")
+    print("Document inserted in the collection: " + collection_name)
+    
+    # Close the connection
+    client.close()
+    
+    
