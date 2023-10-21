@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function MyComponent() {
+function RunButton() {
     const handleButtonClickUtil = async () => {
         try {
             const response = await axios.post('http://localhost:5000/run-util');
@@ -27,4 +27,4 @@ function MyComponent() {
     );
 }
 
-export default MyComponent;
+export default RunButton;
