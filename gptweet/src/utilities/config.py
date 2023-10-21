@@ -2,7 +2,7 @@
 
 # Dictionary containing all API keys and connection strings
 api_keys = {
-    "openai_api_key": 'openai_api_key',
+    "openai_api_key": 'API KEY',
     # Add other keys or connection strings here
 }
 
