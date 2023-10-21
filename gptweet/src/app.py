@@ -13,9 +13,9 @@ def run_util():
 
 @app.route('/run-main', methods=['POST'])
 def run_main():
-    # Since you've already imported main at the top, you can directly call its functions or use its variables here.
-    # For now, we'll just reference it to ensure it's executed.
-    _ = main
+    tweet_gen = TweetGenerator()
+    tweets, tweet_prompt, persona_description, context_description = tweet_gen.generate_tweets(1)
+    display_tweets(tweets,tweet_prompt, persona_description, context_description)
     return jsonify({"result": "main.py executed successfully"})
 
 
