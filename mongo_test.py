@@ -8,9 +8,12 @@ persona_collection = db['persona_collection']
 context_collection = db['context_collection']
 prompt_collection = db['prompt_collection']
 
-for document in prompt_collection.find():
+for document in context_collection.find():
     #breakdown the document into its parts
     tweet = document['tweet']
-    prompt = document['prompt']
-    print(prompt)
+    # prompt = document['prompt']
+    context = document['context']
+    print("Context: ")
+    print(context)
+    print("Tweet: ")
     print(tweet)
