@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { CCarousel, CCarouselItem, CImage } from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css';
 
-const CoreUICarousel = ({ images }) => {
+const Carousel = ({ images }) => {
   return (
     <CCarousel controls indicators>
       {images.map((image, index) => (
@@ -14,9 +14,10 @@ const CoreUICarousel = ({ images }) => {
   );
 };
 
-// Define propTypes for CoreUICarousel component
-CoreUICarousel.propTypes = {
+// Define propTypes for Carousel component
+Carousel.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
+// Export the Carousel component
 export default Carousel;
