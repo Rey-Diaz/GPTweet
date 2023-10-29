@@ -1,28 +1,22 @@
-import { useState } from 'react';
-import '../App.css';
+import PropTypes from 'prop-types';
+import { CCarousel, CCarouselItem, CImage } from '@coreui/react';
+import '@coreui/coreui/dist/css/coreui.min.css';
 
-const Carousel = ({ images }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const goToPrevious = () => {
-    const isFirstImage = currentImageIndex === 0;
-    const newIndex = isFirstImage ? images.length - 1 : currentImageIndex - 1;
-    setCurrentImageIndex(newIndex);
-  };
-
-  const goToNext = () => {
-    const isLastImage = currentImageIndex === images.length - 1;
-    const newIndex = isLastImage ? 0 : currentImageIndex + 1;
-    setCurrentImageIndex(newIndex);
-  };
-
+const CoreUICarousel = ({ images }) => {
   return (
-    <div className="carousel-container">
-      <button onClick={goToPrevious} className="carousel-button prev-button">&lt;</button>
-      <img src={images[currentImageIndex]} alt="carousel" className="carousel-image" />
-      <button onClick={goToNext} className="carousel-button next-button">&gt;</button>
-    </div>
+    <CCarousel controls indicators>
+      {images.map((image, index) => (
+        <CCarouselItem key={index}>
+          <CImage className="d-block w-100" src={image} alt={`slide-${index}`} />
+        </CCarouselItem>
+      ))}
+    </CCarousel>
   );
+};
+
+// Define propTypes for CoreUICarousel component
+CoreUICarousel.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Carousel;
