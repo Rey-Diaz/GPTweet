@@ -1,16 +1,22 @@
-import './App.css'
-import Home from './pages/Home'
-import '@coreui/coreui/dist/css/coreui.min.css';
-// ... other imports
-
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Sidebar from './components/Sidebar';
+import Home from './pages/Home';
+import './App.css';
 
 function App() {
-  
   return (
-    <>
-      <Home />
-    </>
-  )
+    <div className="app-container">
+      <Header />
+      <div className="content-container">
+        <Sidebar />
+        <div className="main-content">
+          <Home />
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;

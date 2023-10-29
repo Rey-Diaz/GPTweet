@@ -1,23 +1,24 @@
-import PropTypes from 'prop-types';
 import { CCarousel, CCarouselItem, CImage } from '@coreui/react';
-import '@coreui/coreui/dist/css/coreui.min.css';
+import '@coreui/coreui/dist/css/coreui.min.css'; // Import CoreUI CSS
 
-const Carousel = ({ images }) => {
+// Define your image paths in an array
+const imagePaths = [
+  'https://picsum.photos/id/237/2000/300', // Image of a dog
+  'https://picsum.photos/id/238/2000/300', // Image of a mountain
+  'https://picsum.photos/id/239/2000/300', // Image of a tree
+  // Add more image paths as needed
+];
+
+const Carousel = () => {
   return (
     <CCarousel controls indicators>
-      {images.map((image, index) => (
+      {imagePaths.map((src, index) => (
         <CCarouselItem key={index}>
-          <CImage className="d-block w-100" src={image} alt={`slide-${index}`} />
+          <CImage className="d-block w-100" src={src} alt={`Slide ${index + 1}`} />
         </CCarouselItem>
       ))}
     </CCarousel>
   );
 };
 
-// Define propTypes for Carousel component
-Carousel.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
-// Export the Carousel component
 export default Carousel;
