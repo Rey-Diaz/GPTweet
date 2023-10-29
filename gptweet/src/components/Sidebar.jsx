@@ -1,28 +1,13 @@
 import { useState } from 'react';
-import {
-  CSidebar,
-  CSidebarBrand,
-  CSidebarNav,
-  CNavGroup,
-  CNavItem,
-  CNavLink,
-  CSidebarToggler,
-} from '@coreui/react';
-import '../app.css';
+import { CSidebar, CSidebarBrand, CSidebarNav, CNavGroup, CNavItem, CNavLink, CSidebarToggler } from '@coreui/react';
+import '../App.css';
 
 function Sidebar() {
-  const [unfoldable, setUnfoldable] = useState(false);  // State to manage unfoldable
+  const [unfoldable, setUnfoldable] = useState(false);
 
   return (
-    <CSidebar
-      position="fixed"
-      size="lg"
-      className="custom-sidebar"
-      unfoldable={unfoldable}  // Set unfoldable state
-    >
-      <CSidebarBrand className="d-md-down-none" to="/">
-        My Sidebar
-      </CSidebarBrand>
+    <CSidebar position="fixed" size="lg" className="custom-sidebar" unfoldable={unfoldable}>
+      <CSidebarBrand className="d-md-down-none" to="/">My Sidebar</CSidebarBrand>
       <CSidebarNav>
         <CNavGroup toggler="CoreUI Components">
           <CNavItem>
@@ -33,9 +18,7 @@ function Sidebar() {
           </CNavItem>
         </CNavGroup>
       </CSidebarNav>
-      <CSidebarToggler // Toggler to control unfoldable
-        onClick={() => setUnfoldable(!unfoldable)}
-      />
+      <CSidebarToggler onClick={() => setUnfoldable(!unfoldable)} />
     </CSidebar>
   );
 }

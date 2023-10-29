@@ -1,8 +1,8 @@
-import '../app.css';
+import '../App.css';
 
 function Footer() {
   return (
-    <footer className="footer" style={{ backgroundColor: 'var(--brand-secondary)' }}>
+    <footer className="footer">
       {/* Footer content */}
     </footer>
   );
