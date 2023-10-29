@@ -1,13 +1,12 @@
 .theme-toggle-button {
-    background-color: var(--brand-info);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .theme-toggle-button:hover {
-    background-color: var(--brand-warning);
-  }
-  
+  background-color: var(--brand-info);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle-button:hover {
+  background-color: var(--brand-warning);
+}

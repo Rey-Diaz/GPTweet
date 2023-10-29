@@ -1,8 +1,7 @@
 .custom-sidebar {
-    background-color: var(--brand-dark);
-  }
-  
-  .custom-sidebar a {
-    color: var(--brand-light);
-  }
-  
+  background-color: var(--brand-dark);
+}
+
+.custom-sidebar a {
+  color: var(--brand-light);
+}

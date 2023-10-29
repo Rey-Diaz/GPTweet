@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CSidebar, CSidebarBrand, CSidebarNav, CNavGroup, CNavItem, CNavLink, CSidebarToggler } from '@coreui/react';
 import '../App.css';
+import './Sidebar.css';
 
 function Sidebar() {
   const [unfoldable, setUnfoldable] = useState(false);

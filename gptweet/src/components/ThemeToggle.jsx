@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../App.css';
+import 'ThemeToggle.css';
 
 function ThemeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false);
