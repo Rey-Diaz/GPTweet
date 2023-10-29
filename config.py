@@ -2,7 +2,7 @@
 
 # Dictionary containing all API keys and connection strings
 api_keys = {
-    "openai_api_key": "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",
+    "openai_api_key": "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",
     # Add other keys or connection strings here
 }
 
