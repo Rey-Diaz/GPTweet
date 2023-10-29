@@ -5,7 +5,7 @@ function Header() {
     <header className="header" style={{ backgroundColor: 'var(--brand-primary)' }}>
       {/* Logo placeholder */}
       <div className="logo">
-        <img src="logo-placeholder.png" alt="Company Logo" />
+        <img src="https://picsum.photos/200/100" alt="Company Logo" />  {/* Logo placeholder image */}
       </div>
       {/* Login/Logout Button */}
       <button className="login-logout-button">
@@ -13,7 +13,7 @@ function Header() {
       </button>
       {/* Profile Picture */}
       <div className="profile-picture">
-        <img src="profile-placeholder.png" alt="Profile" />
+        <img src="https://picsum.photos/100" alt="Profile" />  {/* Profile picture placeholder image */}
       </div>
     </header>
   );

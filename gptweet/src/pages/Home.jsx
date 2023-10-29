@@ -10,6 +10,9 @@ function MainPage() {
       <Sidebar />
       <ThemeToggle />
       {/* Other content */}
+      <div className="content">
+        <img src="https://picsum.photos/400/200" alt="Random Content" />  {/* Content placeholder image */}
+      </div>
       <Footer />
     </div>
   );

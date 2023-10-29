@@ -1,4 +1,3 @@
-/* theme.css */
 :root {
   --brand-primary: #857dcc;
   --brand-secondary: #a7a7a7;
@@ -10,14 +9,85 @@
   --brand-dark: #000015;
 }
 
-
-.fixed-navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000; /* High z-index to ensure it stays on top */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--brand-light);
 }
 
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--brand-primary);
+  padding: 1em;
+}
+
+.logo img {
+  width: 200px;
+}
+
+.profile-picture img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.login-logout-button {
+  background-color: var(--brand-secondary);
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+/* Sidebar Styles */
 .custom-sidebar {
-  margin-top: 56px; /* Adjust this value to match the height of your navbar */
+  margin-top: 56px;
+  width: 250px;
+  background-color: var(--brand-dark);
+  color: var(--brand-light);
+}
+
+/* Footer Styles */
+.footer {
+  background-color: var(--brand-secondary);
+  text-align: center;
+  padding: 1em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Main Content Styles */
+.content {
+  margin: 1em;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle-button {
+  background-color: var(--brand-info);
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .header, .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo img, .profile-picture img {
+    width: 100px;
+  }
+
+  .custom-sidebar {
+    margin-top: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+  }
 }
