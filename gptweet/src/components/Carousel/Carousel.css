@@ -1,0 +1,8 @@
+.carousel-button {
+  background-color: var(--brand-primary);
+  color: var(--brand-light);
+}
+
+.carousel-button:hover {
+  background-color: var(--brand-info);
+}

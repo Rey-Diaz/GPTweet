@@ -1,4 +1,4 @@
-/* App.css */
+/* App.css (Updated layout with header, main content, and footer) */
 
 /* Define brand colors */
 :root {
@@ -14,7 +14,7 @@
 
 /* General page styles */
 body, html {
-  height: 100%; /* Make sure the html and body are full height */
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
@@ -28,19 +28,31 @@ body, html {
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Use viewport height to ensure full coverage */
+  min-height: 100vh;
 }
 
-/* Main content area styles */
-.content-area {
-  flex: 1; /* This will make the content area grow and take up available space */
-  /* Add your content-area specific styles here */
+/* Header styles */
+.header {
+  background-color: var(--brand-primary);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 /* Footer styles */
 .footer {
   background-color: var(--brand-secondary);
-  padding: 1rem;
+  color: white;
+  padding: 10px;
   text-align: center;
-  margin-top: auto; /* This will push the footer to the bottom */
+  align-self: flex-end; /* Footer at the bottom */
 }
