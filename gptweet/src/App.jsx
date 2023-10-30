@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import './App.css';
 import Carousel from './components/Carousel';
+import runButton from './components/runButton'
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -30,6 +31,7 @@ function App() {
     <div className="flex flex-col min-h-screen">
       <Header onThemeToggle={handleThemeToggle} darkMode={darkMode} />
       <main className="flex-grow">
+        <runButton />
         <Home />
         <Carousel />
       </main>
