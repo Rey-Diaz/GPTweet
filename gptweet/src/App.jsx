@@ -1,5 +1,4 @@
-// App.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -8,15 +7,23 @@ import './App.css';
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
+  // Effect to toggle the class on the body element
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]); // Depend on darkMode state
+
   const handleThemeToggle = () => {
     setDarkMode(!darkMode);
   };
 
-  const themeClass = darkMode ? 'bg-brand-dark text-white' : 'bg-brand-light text-brand-dark';
-
+  // Removed themeClass as we are now toggling class on the body element
   return (
-    <div className={`flex flex-col min-h-screen ${themeClass}`}>
-      <Header onThemeToggle={handleThemeToggle} />
+    <div className="flex flex-col min-h-screen">
+      <Header onThemeToggle={handleThemeToggle} darkMode={darkMode} />
       <main className="flex-grow">
         <Home />
       </main>

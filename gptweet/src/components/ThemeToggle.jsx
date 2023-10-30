@@ -1,19 +1,21 @@
-import { useState } from 'react';
-import '../App.css';
+import PropTypes from 'prop-types'; // Import PropTypes
+import Switch from '@mui/material/Switch';
 
-function ThemeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.style.setProperty('--current-bg', isDarkMode ? 'var(--brand-dark)' : 'var(--brand-light)');
-  };
-
+const ThemeToggle = ({ onToggle, isDarkMode }) => {
   return (
-    <button className="theme-toggle-button" onClick={toggleTheme}>
-      Toggle Theme
-    </button>
+    <Switch
+      checked={isDarkMode}
+      onChange={onToggle}
+      color="default"
+      inputProps={{ 'aria-label': 'toggle dark mode' }}
+    />
   );
-}
+};
+
+// Define the PropTypes
+ThemeToggle.propTypes = {
+  onToggle: PropTypes.func.isRequired,
+  isDarkMode: PropTypes.bool.isRequired
+};
 
 export default ThemeToggle;

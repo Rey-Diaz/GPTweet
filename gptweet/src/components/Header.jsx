@@ -1,40 +1,26 @@
-import PropTypes from 'prop-types';
+
+import PropTypes from 'prop-types'; // Import PropTypes
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
+import ThemeToggle from './ThemeToggle'; // Import the ThemeToggle component
 
-const Header = ({ onThemeToggle }) => {
+const Header = ({ onThemeToggle, darkMode }) => {
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'var(--brand-primary)', color: 'var(--brand-light)' }}>
+    <AppBar position="static">
       <Toolbar>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          sx={{ marginRight: '12px' }}
-        >
+        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          My React App
+          GPTweet
         </Typography>
         {/* Theme toggle switch */}
-        <Switch
-          color="default"
-          onChange={onThemeToggle}
-          inputProps={{ 'aria-label': 'theme toggle' }}
-        />
-        <IconButton
-          edge="end"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          color="inherit"
-        >
+        <ThemeToggle onToggle={onThemeToggle} isDarkMode={darkMode} />
+        <IconButton edge="end" color="inherit">
           <AccountCircleIcon />
         </IconButton>
       </Toolbar>
@@ -42,8 +28,10 @@ const Header = ({ onThemeToggle }) => {
   );
 };
 
+// Define the PropTypes
 Header.propTypes = {
   onThemeToggle: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired
 };
 
 export default Header;
