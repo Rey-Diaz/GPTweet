@@ -1,4 +1,7 @@
 /* App.css (Updated layout with header, main content, and footer) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Define brand colors */
 :root {
@@ -10,49 +13,4 @@
   --brand-info: #5299e0;
   --brand-light: #ffffff;
   --brand-dark: #000015;
-}
-
-/* General page styles */
-body, html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background-color: var(--brand-light);
-  color: var(--brand-dark);
-  display: flex;
-  flex-direction: column;
-}
-
-/* Ensure the #app or main wrapper takes up full viewport height */
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Header styles */
-.header {
-  background-color: var(--brand-primary);
-  color: white;
-  padding: 10px;
-  text-align: center;
-}
-
-/* Main content area */
-.main-content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-/* Footer styles */
-.footer {
-  background-color: var(--brand-secondary);
-  color: white;
-  padding: 10px;
-  text-align: center;
-  align-self: flex-end; /* Footer at the bottom */
 }
