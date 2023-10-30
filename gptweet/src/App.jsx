@@ -1,37 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import RunButton from './components/runButton'
+import { useState, useEffect } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import './App.css';
+import Carousel from './components/Carousel';
+import RunButton from './components/runButton';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Effect to toggle the class on the body element and set background color
+  useEffect(() => {
+    // Set the background color directly on the body element
+    const backgroundColor = darkMode ? '#121212' : '#ffffff'; // Use your dark and light background colors
+    document.body.style.backgroundColor = backgroundColor;
+
+    // Toggle the dark-mode class for content colors
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]); // This effect runs when darkMode state changes
+
+  const handleThemeToggle = () => {
+    setDarkMode(!darkMode); // Toggle the darkMode state
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div className="flex flex-col min-h-screen">
+      <Header onThemeToggle={handleThemeToggle} darkMode={darkMode} />
+      <main className="flex-grow">
         <RunButton />
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+        <Home />
+        <Carousel />
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;

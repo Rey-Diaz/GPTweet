@@ -1,42 +1,69 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* App.css (Updated layout with header, main content, and footer) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset some default styles */
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Light theme colors */
+:root {
+  --brand-success: #d4edda;
+  --brand-danger: #f8d7da;
+  --brand-warning: #fff3cd;
+  --brand-info: #d1ecf1;
+  --brand-primary: #007bff;
+  --brand-secondary: #6c757d;
+  --background-color: #ffffff;
+  /* ... other colors ... */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Dark theme colors */
+body.dark-mode {
+  --brand-success: #056f52;
+  --brand-danger: #a71d2a;
+  --brand-warning: #856404;
+  --brand-info: #0c5460;
+  --brand-primary: #28527a;
+  --brand-secondary: #343a40;
+  --background-color: #121212;
+  /* ... other colors ... */
 }
 
-.card {
-  padding: 2em;
+/* Apply the theme colors */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
 }
 
-.read-the-docs {
-  color: #888;
+/* Styles for the theme toggle button */
+.theme-toggle-button {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--brand-secondary);
+  color: var(--brand-dark);
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
 }
+
+.theme-toggle-button:hover {
+  background-color: var(--brand-primary);
+  color: var(--brand-light);
+}
+
+body {
+  background-color: var(--background-color);
+  transition: background-color 0.3s; /* Smooth transition for theme change */
+  /* ... other styles ... */
+}
+
+/* Other component styles */
+/* ... */
