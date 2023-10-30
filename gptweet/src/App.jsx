@@ -1,28 +1,22 @@
+
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 
 function App() {
   return (
-    // Flex container with vertical direction
-    <div className="flex flex-col min-h-screen">
-      {/* Fixed NavBar at the top of the screen */}
-      <div className="fixed top-0 w-full z-10">
-        <NavBar />
-      </div>
+    <div className="flex flex-col h-screen">
+      {/* NavBar fixed to the top */}
+      <NavBar />
 
-      {/* Main content with padding top to offset the fixed NavBar */}
-      {/* The pt-* class should be adjusted based on the actual height of your NavBar */}
-      {/* pb-* class should be adjusted based on the actual height of your Footer */}
-      <main className="flex-grow pt-16 pb-14">
+      {/* Main content area - flex-grow allows it to expand to fill the space between NavBar and Footer */}
+      {/* Padding top and bottom should be adjusted to the height of the NavBar and Footer respectively */}
+      <main className="flex-grow overflow-y-auto pt-[height_of_navbar] pb-[height_of_footer]">
         <Home />
       </main>
 
-      {/* Footer at the bottom */}
-      {/* Fixed at the bottom of the viewport */}
-      <div className="fixed bottom-0 w-full">
-        <Footer />
-      </div>
+      {/* Footer fixed to the bottom */}
+      <Footer />
     </div>
   );
 }

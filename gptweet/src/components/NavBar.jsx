@@ -17,50 +17,53 @@ import {
   CButton,
   CContainer,
 } from '@coreui/react';
-import '../App.css';
+import '../App.css'; // Ensure this does not contain conflicting styles
 
 function Navbar() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <CNavbar expand="lg" colorScheme="light" className="bg-light">
-      <CContainer fluid>
-        <CNavbarBrand href="#">Navbar</CNavbarBrand>
-        <CNavbarToggler onClick={() => setVisible(!visible)} />
-        <CCollapse className="navbar-collapse" visible={visible}>
-          <CNavbarNav className="me-auto mb-2 mb-lg-0">
-            <CNavItem>
-              <CNavLink href="#" active>
-                Home
-              </CNavLink>
-            </CNavItem>
-            <CNavItem>
-              <CNavLink href="#">Link</CNavLink>
-            </CNavItem>
-            <CDropdown variant="nav-item" popper={false}>
-              <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem href="#">Action</CDropdownItem>
-                <CDropdownItem href="#">Another action</CDropdownItem>
-                <CDropdownDivider />
-                <CDropdownItem href="#">Something else here</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-            <CNavItem>
-              <CNavLink href="#" disabled>
-                Disabled
-              </CNavLink>
-            </CNavItem>
-          </CNavbarNav>
-          <CForm className="d-flex" role="search">
-            <CFormInput type="search" className="me-2" placeholder="Search" aria-label="Search" />
-            <CButton type="submit" color="success" variant="outline">
-              Search
-            </CButton>
-          </CForm>
-        </CCollapse>
-      </CContainer>
-    </CNavbar>
+    // Fixed positioning applied with Tailwind classes
+    <div className="fixed top-0 left-0 right-0 z-50">
+      <CNavbar expand="lg" colorScheme="light" className="bg-light">
+        <CContainer fluid>
+          <CNavbarBrand href="#">Navbar</CNavbarBrand>
+          <CNavbarToggler onClick={() => setVisible(!visible)} />
+          <CCollapse className="navbar-collapse" visible={visible}>
+            <CNavbarNav className="me-auto mb-2 mb-lg-0">
+              <CNavItem>
+                <CNavLink href="#" active>
+                  Home
+                </CNavLink>
+              </CNavItem>
+              <CNavItem>
+                <CNavLink href="#">Link</CNavLink>
+              </CNavItem>
+              <CDropdown variant="nav-item" popper={false}>
+                <CDropdownToggle color="secondary">Dropdown</CDropdownToggle>
+                <CDropdownMenu>
+                  <CDropdownItem href="#">Action</CDropdownItem>
+                  <CDropdownItem href="#">Another action</CDropdownItem>
+                  <CDropdownDivider />
+                  <CDropdownItem href="#">Something else here</CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+              <CNavItem>
+                <CNavLink href="#" disabled>
+                  Disabled
+                </CNavLink>
+              </CNavItem>
+            </CNavbarNav>
+            <CForm className="d-flex" role="search">
+              <CFormInput type="search" className="me-2" placeholder="Search" aria-label="Search" />
+              <CButton type="submit" color="success" variant="outline">
+                Search
+              </CButton>
+            </CForm>
+          </CCollapse>
+        </CContainer>
+      </CNavbar>
+    </div>
   );
 }
 
