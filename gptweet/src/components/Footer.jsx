@@ -1,5 +1,3 @@
-import '../../App.css';
-
 import { CFooter } from '@coreui/react';
 
 const Footer = () => {

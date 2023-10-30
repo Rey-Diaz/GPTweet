@@ -17,7 +17,7 @@ import {
   CButton,
   CContainer,
 } from '@coreui/react';
-import './NavBar.css';
+import '../App.css';
 
 function Navbar() {
   const [visible, setVisible] = useState(false);

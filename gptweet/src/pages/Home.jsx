@@ -1,5 +1,5 @@
-import Carousel from '../components/Carousel/Carousel'; // Import the Carousel component
-import RunButton from '../components/runButton/runButton'; // Import the RunButton component
+import Carousel from '../components/Carousel'; // Import the Carousel component
+import RunButton from '../components/runButton'; // Import the RunButton component
 
 function Home() {
   return (

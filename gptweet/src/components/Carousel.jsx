@@ -1,6 +1,6 @@
 import { CCarousel, CCarouselItem, CImage } from '@coreui/react';
-import '@coreui/coreui/dist/css/coreui.min.css'; // Import CoreUI CSS
-import './Carousel.css';
+import '@coreui/coreui/dist/css/coreui.min.css';
+import '../App.css';
 // Define your image paths in an array
 const imagePaths = [
   'https://picsum.photos/id/237/2000/300', // Image of a dog

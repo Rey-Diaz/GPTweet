@@ -1,5 +1,5 @@
-import NavBar from './components/NavBar/NavBar';
-import Footer from './components/Core/Footer';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 
 function App() {
