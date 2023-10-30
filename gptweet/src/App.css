@@ -33,7 +33,6 @@ body.dark-mode {
   /* ... other colors ... */
 }
 
-
 /* Apply the theme colors */
 body {
   background-color: var(--background-color);
