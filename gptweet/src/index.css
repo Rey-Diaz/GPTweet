@@ -1,0 +1,12 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom styles here */
+body {
+  /* Example of a custom style */
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Other global styles */

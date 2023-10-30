@@ -1,21 +1,25 @@
-
-import NavBar from './components/NavBar';
+// App.jsx
+import { useState } from 'react';
+import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import './App.css';
 
 function App() {
-  return (
-    <div className="flex flex-col h-screen">
-      {/* NavBar fixed to the top */}
-      <NavBar />
+  const [darkMode, setDarkMode] = useState(false);
 
-      {/* Main content area - flex-grow allows it to expand to fill the space between NavBar and Footer */}
-      {/* Padding top and bottom should be adjusted to the height of the NavBar and Footer respectively */}
-      <main className="flex-grow overflow-y-auto pt-[height_of_navbar] pb-[height_of_footer]">
+  const handleThemeToggle = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const themeClass = darkMode ? 'bg-brand-dark text-white' : 'bg-brand-light text-brand-dark';
+
+  return (
+    <div className={`flex flex-col min-h-screen ${themeClass}`}>
+      <Header onThemeToggle={handleThemeToggle} />
+      <main className="flex-grow">
         <Home />
       </main>
-
-      {/* Footer fixed to the bottom */}
       <Footer />
     </div>
   );

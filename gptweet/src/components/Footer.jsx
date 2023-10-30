@@ -1,20 +1,16 @@
-import { CFooter } from '@coreui/react';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 const Footer = () => {
   return (
-    // Fixed positioning applied with Tailwind classes
-    <div className="fixed bottom-0 left-0 right-0 z-50">
-      <CFooter>
-        <div>
-          <a href="https://coreui.io" target="_blank" rel="noopener noreferrer">CoreUI</a>
-          <span className="ms-1">&copy; {new Date().getFullYear()} GPTweet.</span>
-        </div>
-        <div className="ms-auto">
-          <span className="me-1">Powered by</span>
-          <a href="https://coreui.io/react" target="_blank" rel="noopener noreferrer">CoreUI for React</a>
-        </div>
-      </CFooter>
-    </div>
+    <Box component="footer" className="fixed inset-x-0 bottom-0 bg-gray-800 text-white">
+      <Container maxWidth="lg" className="py-4">
+        <Typography variant="body1" className="text-center">
+          &copy; {new Date().getFullYear()} My React App
+        </Typography>
+      </Container>
+    </Box>
   );
 };
 
